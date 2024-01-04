@@ -1,0 +1,19 @@
+Создал в том же репозитории файл local-included-file.yml с джобой:
+
+local included file job:
+  script:
+    - echo "This is code from the file, which is included localy"
+
+
+Затем другой репозиторий (проект) и разместил в нём файл remote-included-file.yml с джобой:
+
+remote included file job:
+  script:
+    - echo "This is code from the file, which is included from another repository"
+
+
+Далее:
+
+include:
+  - remote: https://gitlab.com/ci-cd7655047/5/-/raw/main/remote-included-file.yml
+  - local: local-included-file.yml
